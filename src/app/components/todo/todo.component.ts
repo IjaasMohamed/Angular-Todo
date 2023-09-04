@@ -15,7 +15,7 @@ export class TodoComponent implements OnInit{
     this.todos = [
       {
       content:'First content',
-      completed:true
+      completed:false
       },
       {
         content:'Second content',
@@ -24,11 +24,14 @@ export class TodoComponent implements OnInit{
     ]
   }
 
-  toggleDone (id : number){
+  toggleDone (id : number ){
     this.todos.map((v, i ) => {
-      if (i == id) v.completed == !v.completed;
+      if (i == id) v.completed = !v.completed;
 
       return v;
     })
+  }
+  deleteTodo(id : number){
+    this.todos = this.todos.filter((v,i) => i !== (id - 1) );
   }
 }
